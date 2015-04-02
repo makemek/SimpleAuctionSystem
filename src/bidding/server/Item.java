@@ -25,11 +25,15 @@ public class Item {
      * @return item has the same name
      */
     public boolean equals(Object obj) {
-        if( !(obj instanceof Item))
+        String name;
+        if(obj instanceof String)
+            name = (String)obj;
+        else if(obj instanceof Item)
+            name = ((Item) obj).itemName;
+        else
             return false;
 
-        Item item = (Item)obj;
-        return itemName.equalsIgnoreCase(item.itemName);
+        return itemName.equalsIgnoreCase(name);
     }
 
     public boolean bid(String bidderName, double bidPrice) {
