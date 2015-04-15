@@ -7,13 +7,16 @@ package bidding.server;
 //TODO Implement ItemProvider functionality
 public class ItemProvider implements IAuctionServer {
 
+    DBMock db;
+
     public ItemProvider(DBMock db) {
-        throw new UnsupportedOperationException();
+        this.db = db;
     }
 
     @Override
     public void placeItemForBid(String ownerName, String itemName, String itemDesc, double startBid, int auctionTime) {
-        throw new UnsupportedOperationException();
+        Item item = ItemFactory.create(ownerName, itemName, itemDesc, startBid, auctionTime);
+        db.addItem(item);
     }
 
     @Override
