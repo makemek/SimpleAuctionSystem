@@ -16,7 +16,9 @@ public class Item {
     int timeRemaining;
 
     public Item(String ownerName, String itemName, String description) {
-
+        this.ownerName = ownerName;
+        this.itemName = itemName;
+        this.description = description;
     }
 
     /**
@@ -36,6 +38,12 @@ public class Item {
         return itemName.equalsIgnoreCase(name);
     }
 
+    /**
+     * Bid item by price. If bidding price is lower than the previous bidding, it is ignored
+     * @param bidderName name of the bidder
+     * @param bidPrice bidding price
+     * @return boolean accept bidding price or not
+     */
     public boolean bid(String bidderName, double bidPrice) {
         throw new UnsupportedOperationException();
     }
