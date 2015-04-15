@@ -1,5 +1,7 @@
 package bidding.server;
 
+import java.util.ArrayList;
+
 /**
  * A middle man between bidding.client and database
  * Created by MakeMEK on 02/04/15.
@@ -7,7 +9,7 @@ package bidding.server;
 //TODO Implement ItemProvider functionality
 public class ItemProvider implements IAuctionServer {
 
-    DBMock db;
+    private DBMock db;
 
     public ItemProvider(DBMock db) {
         this.db = db;
@@ -21,7 +23,8 @@ public class ItemProvider implements IAuctionServer {
 
     @Override
     public void bidOnItem(String bidderName, String itemName, double bid) {
-        throw new UnsupportedOperationException();
+        Item item = db.getItem(itemName);
+        item.bid(bidderName, bid);
     }
 
     @Override
@@ -36,6 +39,6 @@ public class ItemProvider implements IAuctionServer {
 
     @Override
     public void registerListener(IAuctionListener al, String itemName) {
-        throw new UnsupportedOperationException();
+        db.getItem(itemName).addBidStatusListener(al);
     }
 }

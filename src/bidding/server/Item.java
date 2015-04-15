@@ -1,5 +1,9 @@
 package bidding.server;
 
+import com.sun.org.apache.bcel.internal.generic.IADD;
+
+import java.util.ArrayList;
+
 /**
  * Item's info for bidding
  * Item's name use to uniquely distinguish object
@@ -14,6 +18,8 @@ public class Item {
     private double currentBid;
     private String bidderName;
     private int timeRemaining;
+
+    private ArrayList<IAuctionListener> listener = new ArrayList<IAuctionListener>();
 
     public Item(String ownerName, String itemName, String description, double price) {
         this.ownerName = ownerName;
@@ -50,7 +56,18 @@ public class Item {
             return false;
         this.bidderName = bidderName;
         currentBid = bidPrice;
+
+        notifyObserver();
         return true;
+    }
+
+    public void addBidStatusListener(IAuctionListener listener) {
+        this.listener.add(listener);
+    }
+
+    private void notifyObserver() {
+        for(IAuctionListener obs: listener)
+            obs.update(this);
     }
 
     public String getOwner() {
