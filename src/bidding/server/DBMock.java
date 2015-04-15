@@ -19,7 +19,7 @@ public class DBMock {
      */
     public Item getItem(String itemName) {
         for(Item item: items)
-            if(item.itemName.equalsIgnoreCase(itemName))
+            if(item.getItemName().equalsIgnoreCase(itemName))
                 return item;
         throw new IllegalArgumentException("Item: " + itemName + " not found");
     }

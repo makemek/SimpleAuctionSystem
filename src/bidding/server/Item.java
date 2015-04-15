@@ -7,13 +7,13 @@ package bidding.server;
  */
 public class Item {
 
-    String ownerName;
-    String itemName;
-    String description;
+    private String ownerName;
+    private String itemName;
+    private String description;
 
-    double currentBid;
-    String bidderName;
-    int timeRemaining;
+    private double currentBid;
+    private String bidderName;
+    private int timeRemaining;
 
     public Item(String ownerName, String itemName, String description, double price) {
         this.ownerName = ownerName;
