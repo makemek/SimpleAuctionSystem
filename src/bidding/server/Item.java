@@ -1,10 +1,10 @@
 package bidding.server;
 
 /**
- *
+ * Item's info for bidding
+ * Item's name use to uniquely distinguish object
  * Created by MakeMEK on 02/04/15.
  */
-//TODO Implement Item's functionality
 public class Item {
 
     String ownerName;
@@ -15,10 +15,11 @@ public class Item {
     String bidderName;
     int timeRemaining;
 
-    public Item(String ownerName, String itemName, String description) {
+    public Item(String ownerName, String itemName, String description, double price) {
         this.ownerName = ownerName;
         this.itemName = itemName;
         this.description = description;
+        this.currentBid = price;
     }
 
     /**
@@ -45,10 +46,30 @@ public class Item {
      * @return boolean accept bidding price or not
      */
     public boolean bid(String bidderName, double bidPrice) {
-        throw new UnsupportedOperationException();
+        if(bidPrice < currentBid)
+            return false;
+        this.bidderName = bidderName;
+        currentBid = bidPrice;
+        return true;
+    }
+
+    public String getOwner() {
+        return ownerName;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public String getBidderName() {
+        return bidderName;
+    }
+
+    public double getBiddingPrice() {
+        return currentBid;
     }
 
     public void setTimeRemaining(int seconds) {
-        throw new UnsupportedOperationException();
+        timeRemaining = seconds;
     }
 }
