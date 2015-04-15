@@ -65,6 +65,10 @@ public class Item {
         this.listener.add(listener);
     }
 
+    public IAuctionListener[] getListeners() {
+        return listener.toArray(new IAuctionListener[listener.size()]);
+    }
+
     private void notifyObserver() {
         for(IAuctionListener obs: listener)
             obs.update(this);
