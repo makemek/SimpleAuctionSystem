@@ -6,7 +6,6 @@ import java.util.ArrayList;
  * A middle man between bidding.client and database
  * Created by MakeMEK on 02/04/15.
  */
-//TODO Implement ItemProvider functionality
 public class ItemProvider implements IAuctionServer {
 
     private DBMock db;
@@ -29,12 +28,12 @@ public class ItemProvider implements IAuctionServer {
 
     @Override
     public Item[] getItems() {
-        throw new UnsupportedOperationException();
+        return db.getItems();
     }
 
     @Override
     public Item getItem(String itemName) {
-        throw new UnsupportedOperationException();
+        return db.getItem(itemName);
     }
 
     @Override
