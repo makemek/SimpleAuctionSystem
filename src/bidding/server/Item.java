@@ -90,6 +90,10 @@ public class Item {
         return currentBid;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public void setTimeRemaining(int seconds) {
         timeRemaining = seconds;
     }

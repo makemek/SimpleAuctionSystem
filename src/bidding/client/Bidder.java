@@ -16,36 +16,13 @@ public class Bidder implements IAuctionListener {
 
     public String getName() {return bidderName;}
 
-    /**
-     * A testing scenario with
-     * 1. 3 auction items, A, B, and C
-     * 2. 2 bidders, Alice, Bob
-     *
-     * Scenario
-     * 1. Alice bid A $10
-     * 2. Bob bid A $20
-     * 3. Bob bid B $5
-     * @param args command-line arguments
-     */
-    public static void main(String... args) {
-        Bidder bobPage = new Bidder("Bob");
-        Bidder AlicePage = new Bidder("Alice");
-        DBMock db = new DBMock();
-
-        //TODO Implement scenarios and assumptions
-        // pre-assumptions
-
-
-        // scenario
-
-
-        IAuctionServer provider = new ItemProvider(new DBMock());
-
-    }
-
     @Override
     public void update(Item item) {
-        //TODO Implement what to do when item is updated
-        throw new UnsupportedOperationException();
+        System.out.println("New bid");
+        System.out.println("Bidder: " + item.getBidderName());
+        System.out.println("Price: " + item.getBiddingPrice());
+        System.out.println("-------------------------------------");
     }
+
+
 }
