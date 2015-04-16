@@ -9,9 +9,14 @@ import java.util.ArrayList;
 public class ItemProvider implements IAuctionServer {
 
     private DBMock db;
+    private static ItemProvider instance;
 
-    public ItemProvider(DBMock db) {
+    private ItemProvider(DBMock db) {
         this.db = db;
+    }
+
+    public static ItemProvider instance() {
+        return new ItemProvider(new DBMock());
     }
 
     @Override
